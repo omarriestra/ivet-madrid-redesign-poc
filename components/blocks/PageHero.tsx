@@ -21,8 +21,11 @@ export function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="bg-charcoal-950 text-bone-50">
-      <Container className="py-14 sm:py-20 lg:py-24">
+    <section className="flex min-h-[46svh] items-center bg-charcoal-950 text-bone-50 sm:min-h-[52svh]">
+      {/* Altura minima para que todas las cabeceras ocupen lo mismo, tenga el
+          titular una linea o tres. Sin ella, unas paginas abren con una franja
+          fina y otras con un bloque alto. */}
+      <Container className="py-14 sm:py-16 lg:py-20">
         <h1 className="max-w-4xl font-display text-4xl font-semibold sm:text-5xl lg:text-6xl">
           {title}
           {accent && (

@@ -47,7 +47,13 @@ export interface Post {
 }
 
 export interface Product {
+  slug: string;
   name: string;
-  category: string;
-  brand: string;
+  price: number;
+  currency: string;
+  description: string;
+  shortDescription: string;
+  categories: string[];
+  image: string | null;
+  inStock: boolean;
 }

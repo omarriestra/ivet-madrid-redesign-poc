@@ -24,6 +24,7 @@ export default function ClinicasPage() {
       />
 
       <Section>
+        <h2 className="sr-only">Nuestras cuatro clínicas</h2>
         <ul className="grid gap-6 sm:grid-cols-2">
           {clinics.map((clinic) => (
             <li key={clinic.slug} className="reveal">

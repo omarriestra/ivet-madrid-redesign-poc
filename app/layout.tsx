@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { CartProvider } from '@/components/shop/CartProvider';
+import { CartDrawer } from '@/components/shop/CartDrawer';
 import { site } from '@/content/site';
 import './globals.css';
 
@@ -60,11 +62,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Saltar al contenido principal
         </a>
-        <Header />
-        <main id="contenido" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <main id="contenido" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );

@@ -26,10 +26,27 @@ const IMG_DIR = path.join(ROOT, 'public', 'images');
 const failures = [];
 const report = [];
 
-async function fetchText(url) {
-  const res = await fetch(url, { headers: { 'User-Agent': UA } });
-  if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`);
-  return res.text();
+/**
+ * Descarga con reintentos: ivetmadrid.com devuelve 503 de forma intermitente
+ * (su WordPress se cae bajo carga), asi que un fallo puntual no debe abortar
+ * la importacion entera.
+ */
+async function fetchText(url, attempts = 4) {
+  let lastError;
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const res = await fetch(url, { headers: { 'User-Agent': UA } });
+      if (res.ok) return res.text();
+      lastError = new Error(`HTTP ${res.status} ${url}`);
+    } catch (err) {
+      lastError = err;
+    }
+    // Espera creciente entre intentos: 1 s, 2 s, 4 s.
+    if (i < attempts - 1) {
+      await new Promise((r) => setTimeout(r, 1000 * 2 ** i));
+    }
+  }
+  throw lastError;
 }
 
 async function fetchJson(url) {
@@ -170,6 +187,49 @@ async function main() {
     else failures.push(`team/${name}: no resuelto`);
   }
 
+  // ----------------------------------------------------------------- tienda
+  // Catalogo real de WooCommerce: nombre, precio, descripcion e imagen.
+  // La tienda actual no esta enlazada en su web, asi que estos productos
+  // existen en su base de datos pero nadie los ve.
+  console.log('· Catalogo de productos...');
+  const wcProducts = await fetchJson(
+    `${SITE}/wp-json/wc/store/v1/products?per_page=40`,
+  );
+  const catalogue = [];
+
+  for (const prod of wcProducts) {
+    const slug = prod.slug;
+    let image = null;
+    const remote = prod.images?.[0]?.src;
+    if (remote) image = await saveImage(remote, 'productos', slug, { width: 800 });
+
+    const clean = (html) =>
+      sanitizeHtml(html ?? '', { allowedTags: [] })
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    catalogue.push({
+      slug,
+      name: clean(prod.name),
+      price: Number(prod.prices?.price ?? 0) / 100,
+      currency: prod.prices?.currency_code ?? 'EUR',
+      description: clean(prod.description),
+      shortDescription: clean(prod.short_description),
+      categories: (prod.categories ?? []).map((c) => clean(c.name)),
+      image,
+      inStock: prod.is_in_stock !== false,
+    });
+  }
+
+  const catalogueFile = `// Generado por scripts/fetch-assets.mjs. No editar a mano.
+// Catalogo real de la tienda de ivetmadrid.com (WooCommerce).
+import type { Product } from './types';
+
+export const catalogue: Product[] = ${JSON.stringify(catalogue, null, 2)};
+`;
+  await writeFile(path.join(ROOT, 'content', 'catalogue.generated.ts'), catalogueFile, 'utf8');
+  report.push(`  OK   content/catalogue.generated.ts (${catalogue.length} productos)`);
+
   // -------------------------------------------------------------------- blog
   console.log('· Articulos del blog...');
   const posts = await fetchJson(
@@ -193,6 +253,9 @@ async function main() {
       transformTags: {
         // Los titulos del cuerpo bajan un nivel: el <h1> lo pone la pagina.
         h1: 'h2',
+        // WordPress usa h4 sin h3 intermedio en varios articulos; se normaliza
+        // a h3 para que la jerarquia de encabezados no tenga saltos.
+        h4: 'h3',
         a: (tagName, attribs) => ({
           tagName,
           attribs: { ...attribs, rel: 'noopener noreferrer' },

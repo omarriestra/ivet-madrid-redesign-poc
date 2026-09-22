@@ -116,7 +116,7 @@ export default function UrgenciasPage() {
           </div>
 
           <aside className="space-y-6">
-            <ScheduleTable title="Horario de las clínicas" />
+            <ScheduleTable title="Horario de las clínicas" as="h2" />
             <div className="rounded-2xl border border-bone-200 bg-white p-6">
               <h2 className="font-serif text-lg font-semibold">Fuera de horario</h2>
               <p className="mt-3 text-sm leading-relaxed text-charcoal-900/75">

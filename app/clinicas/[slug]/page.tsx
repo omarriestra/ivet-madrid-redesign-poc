@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { ClinicMap } from '@/components/blocks/ClinicMap';
 import { ScheduleTable } from '@/components/blocks/ScheduleTable';
 import { CtaBand } from '@/components/blocks/CtaBand';
-import { TeamMemberCard } from '@/components/blocks/TeamMemberCard';
+import { TeamFlipCard } from '@/components/blocks/TeamFlipCard';
 import {
   getClinic,
   getClinics,
@@ -168,7 +168,7 @@ export default async function ClinicaPage({
       <Section>
         <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:gap-12">
           <ClinicMap query={clinic.mapEmbedQuery} name={clinic.name} />
-          <ScheduleTable />
+          <ScheduleTable as="h2" />
         </div>
       </Section>
 
@@ -178,10 +178,13 @@ export default async function ClinicaPage({
             eyebrow="Equipo"
             title={`Profesionales en ${clinic.shortName}`}
           />
-          <ul className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+          <p className="mt-4 text-sm text-charcoal-900/60">
+            Pulsa en cualquier tarjeta para ver quién es.
+          </p>
+          <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4">
             {staff.map((member) => (
               <li key={member.slug}>
-                <TeamMemberCard member={member} />
+                <TeamFlipCard member={member} />
               </li>
             ))}
           </ul>

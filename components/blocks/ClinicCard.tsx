@@ -3,17 +3,23 @@ import type { Clinic } from '@/content/types';
 import { IconArrow, IconPhone, IconPin, IconWhatsApp } from '@/components/ui/Icons';
 import { whatsappUrl } from '@/lib/utils';
 
-export function ClinicCard({ clinic }: { clinic: Clinic }) {
+export function ClinicCard({
+  clinic,
+  as: Heading = 'h3',
+}: {
+  clinic: Clinic;
+  as?: 'h2' | 'h3';
+}) {
   return (
     <article className="group relative flex flex-col rounded-2xl border border-bone-200 bg-white p-6 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:border-sage-400 hover:shadow-xl hover:shadow-charcoal-950/8">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-700">
         {clinic.neighbourhood}
       </p>
-      <h3 className="mt-2 text-xl">
+      <Heading className="mt-2 text-xl">
         <Link href={`/clinicas/${clinic.slug}`} className="link-grow [--underline:var(--color-sage-600)]">
           {clinic.name}
         </Link>
-      </h3>
+      </Heading>
       <p className="mt-3 flex items-start gap-2 text-sm text-charcoal-900/70">
         <IconPin className="mt-0.5 h-4 w-4 shrink-0 text-sage-700" />
         <span>

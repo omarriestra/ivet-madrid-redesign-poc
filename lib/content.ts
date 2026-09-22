@@ -9,7 +9,7 @@
 import { clinics } from '@/content/clinics';
 import { services } from '@/content/services';
 import { team } from '@/content/team';
-import { products } from '@/content/products';
+import { catalogue } from '@/content/catalogue.generated';
 import { posts } from '@/content/posts.generated';
 import type { Clinic, Post, Product, Service, TeamMember } from '@/content/types';
 
@@ -30,7 +30,22 @@ export function getTeam(): TeamMember[] {
 }
 
 export function getProducts(): Product[] {
-  return products;
+  return catalogue;
+}
+
+export function getProduct(slug: string): Product | undefined {
+  return catalogue.find((p) => p.slug === slug);
+}
+
+/** Productos de la misma categoria, para la ficha. */
+export function getRelatedProducts(slug: string, limit = 4): Product[] {
+  const current = getProduct(slug);
+  if (!current) return [];
+  const sameCategory = catalogue.filter(
+    (p) => p.slug !== slug && p.categories.some((c) => current.categories.includes(c)),
+  );
+  return (sameCategory.length ? sameCategory : catalogue.filter((p) => p.slug !== slug))
+    .slice(0, limit);
 }
 
 export function getPosts(): Post[] {

@@ -77,7 +77,7 @@ export default function ContactoPage() {
               </ul>
             </div>
 
-            <ScheduleTable />
+            <ScheduleTable as="h2" />
           </aside>
         </div>
 

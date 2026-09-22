@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/Button';
 import { IconClose, IconMenu, IconPhone } from '@/components/ui/Icons';
 import { cn } from '@/lib/utils';
+import { CartButton } from '@/components/shop/CartButton';
 
 const nav = [
   { href: '/servicios', label: 'Servicios' },
@@ -124,6 +125,8 @@ export function Header() {
             <IconPhone className="h-4 w-4" />
             Urgencias
           </Button>
+
+          <CartButton />
 
           <button
             type="button"
