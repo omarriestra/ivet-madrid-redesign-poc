@@ -1,26 +1,132 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Azul petroleo: color clinico de marca (coincide con el uniforme del equipo) */
+  --color-petrol-900: #0f2f3d;
+  --color-petrol-800: #123d4d;
+  --color-petrol-700: #17505f;
+  --color-petrol-600: #1d6577;
+  --color-petrol-500: #2a7f95;
+  --color-petrol-300: #7fb3c2;
+  --color-petrol-100: #dceaee;
+  --color-petrol-50: #eff6f8;
+
+  /* Blanco roto: fondo editorial, mas calido que el blanco puro */
+  --color-bone-50: #faf8f4;
+  --color-bone-100: #f5f1ea;
+  --color-bone-200: #ede8e0;
+  --color-bone-300: #ddd5c8;
+
+  /* Acento calido: urgencias y llamadas a la accion */
+  --color-amber-100: #f7e8d8;
+  --color-amber-500: #c8762e;
+  --color-amber-600: #a85f1e;
+  --color-amber-700: #8a4d17;
+
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  /* Escala tipografica fluida, base 16px, ratio ~1.25 */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.25rem, 1.15rem + 0.4vw, 1.375rem);
+  --text-2xl: clamp(1.5rem, 1.35rem + 0.7vw, 1.75rem);
+  --text-3xl: clamp(1.875rem, 1.6rem + 1.2vw, 2.25rem);
+  --text-4xl: clamp(2.25rem, 1.85rem + 1.9vw, 3rem);
+  --text-5xl: clamp(2.75rem, 2.1rem + 3vw, 4rem);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa la cabecera fija al saltar a un ancla */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-bone-50);
+    color: var(--color-petrol-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Foco visible y consistente en todo el sitio (accesibilidad de teclado) */
+  :focus-visible {
+    outline: 3px solid var(--color-amber-600);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-petrol-100);
+    color: var(--color-petrol-900);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Entrada discreta al hacer scroll, sin JavaScript.
+     `animation-range` arranca con el elemento ya entrando (cover 0%) y termina
+     pronto (cover 22%), de modo que todo elemento visible acaba siempre opaco.
+     Si el navegador no soporta animation-timeline, no se aplica nada y el
+     contenido se ve con normalidad. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: reveal-in linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 22%;
+      }
+    }
+  }
+
+  @keyframes reveal-in {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Respeta la preferencia del sistema: una sola regla global. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
