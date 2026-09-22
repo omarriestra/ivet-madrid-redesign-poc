@@ -35,15 +35,13 @@ export function Footer() {
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5">
               <Image
-                src="/images/brand/ivet-logo.webp"
+                src="/images/brand/ivet-symbol.webp"
                 alt=""
                 width={44}
                 height={44}
-                className="h-10 w-10 rounded-lg bg-white/10 object-contain p-1"
+                className="h-11 w-11 rounded-xl bg-white/10 object-contain"
               />
-              <span className="font-serif text-xl font-semibold text-white">
-                IVET Madrid
-              </span>
+              <span className="sr-only">IVET Madrid</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-bone-100/70">
               Medicina veterinaria de proximidad en Madrid. Cuatro clínicas con un mismo

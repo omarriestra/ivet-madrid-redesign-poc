@@ -57,20 +57,20 @@ export function Header() {
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex shrink-0 items-center gap-2.5"
+          className="flex shrink-0 items-center"
           aria-label="IVET Madrid, ir a la portada"
         >
+          {/* Marca: solo el isotipo sobre el cuadro carbon. El archivo del
+              logotipo completo ya incluye la palabra IVET, asi que repetirla
+              al lado duplicaba la marca. */}
           <Image
-            src="/images/brand/ivet-logo.webp"
+            src="/images/brand/ivet-symbol.webp"
             alt=""
             width={44}
             height={44}
-            className="h-10 w-10 rounded-lg bg-charcoal-900 object-contain p-1"
+            className="h-11 w-11 rounded-xl bg-charcoal-950 object-contain"
             priority
           />
-          <span className="font-serif text-xl font-semibold tracking-tight text-charcoal-950">
-            IVET <span className="text-sage-700">Madrid</span>
-          </span>
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">
