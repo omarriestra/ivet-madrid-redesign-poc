@@ -32,7 +32,9 @@ export async function generateMetadata({
   if (!clinic) return {};
 
   return {
-    title: clinic.name,
+    // La plantilla ya antepone "IVET Madrid", asi que aqui va solo el barrio
+    // para no repetir la marca dos veces en la pestana.
+    title: `Clínica en ${clinic.neighbourhood}`,
     description: `${clinic.name}: ${clinic.address}, ${clinic.city}. ${clinic.blurb}`,
   };
 }

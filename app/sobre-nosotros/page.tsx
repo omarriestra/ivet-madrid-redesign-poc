@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Section, SectionHeading } from '@/components/ui/Section';
-import { Container } from '@/components/ui/Container';
+import { PageHero } from '@/components/blocks/PageHero';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import { Button } from '@/components/ui/Button';
 import { history, solidarityProject, getClinics } from '@/lib/content';
@@ -18,16 +18,11 @@ export default function SobreNosotrosPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading
-            as="h1"
-            eyebrow="Sobre nosotros"
-            title="Un proyecto familiar con vocación clínica"
-            description={history.intro}
-          />
-        </Container>
-      </section>
+      <PageHero
+        title="Un proyecto familiar"
+        accent="con vocación clínica."
+        description={history.intro}
+      />
 
       <Section size="narrow">
         <div className="space-y-6 text-lg leading-relaxed text-charcoal-900/80">
@@ -45,7 +40,7 @@ export default function SobreNosotrosPage() {
               key={`${milestone.year}-${milestone.title}`}
               className="reveal relative rounded-2xl border border-bone-200 bg-bone-50 p-6"
             >
-              <span className="font-serif text-3xl font-semibold text-sage-400">
+              <span className="font-serif text-3xl font-semibold text-sage-700">
                 {milestone.year}
               </span>
               <h3 className="mt-3 text-lg">{milestone.title}</h3>

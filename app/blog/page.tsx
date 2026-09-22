@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Section, SectionHeading } from '@/components/ui/Section';
-import { Container } from '@/components/ui/Container';
+import { Section } from '@/components/ui/Section';
+import { PageHero } from '@/components/blocks/PageHero';
 import { PostCard } from '@/components/blocks/PostCard';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import { getPosts } from '@/lib/content';
@@ -20,16 +20,11 @@ export default function BlogPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading
-            as="h1"
-            eyebrow="Blog"
-            title="Consejos para cuidar mejor"
-            description="Artículos escritos por nuestro equipo sobre prevención, alimentación y bienestar animal."
-          />
-        </Container>
-      </section>
+      <PageHero
+        title="Consejos del equipo"
+        accent="para el día a día."
+        description="Prevención, alimentación y bienestar animal, explicado por quienes atienden a tu mascota."
+      />
 
       {featured && (
         <Section className="pb-0">

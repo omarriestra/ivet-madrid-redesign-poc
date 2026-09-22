@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Section, SectionHeading } from '@/components/ui/Section';
-import { Container } from '@/components/ui/Container';
+import { Section } from '@/components/ui/Section';
+import { PageHero } from '@/components/blocks/PageHero';
 import { TeamFlipCard } from '@/components/blocks/TeamFlipCard';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import { getTeam } from '@/lib/content';
@@ -16,16 +16,11 @@ export default function EquipoPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading
-            as="h1"
-            eyebrow="Equipo"
-            title="Más que un equipo, una familia"
-            description="Profesionales de medicina interna, cirugía, dermatología, traumatología, cardiología, oncología y rehabilitación, con el apoyo de un equipo auxiliar que acompaña a cada familia."
-          />
-        </Container>
-      </section>
+      <PageHero
+        title="Quien te atiende"
+        accent="tiene nombre y cara."
+        description="Medicina interna, cirugía, dermatología, traumatología, cardiología, oncología y rehabilitación, con las auxiliares que sostienen cada día."
+      />
 
       <Section>
         <p className="mb-8 text-sm text-charcoal-900/65">

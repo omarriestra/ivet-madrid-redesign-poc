@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Section, SectionHeading } from '@/components/ui/Section';
-import { Container } from '@/components/ui/Container';
+import { Section } from '@/components/ui/Section';
+import { PageHero } from '@/components/blocks/PageHero';
 import { ContactForm } from '@/components/blocks/ContactForm';
 import { EmergencyStrip } from '@/components/blocks/EmergencyStrip';
 import { ScheduleTable } from '@/components/blocks/ScheduleTable';
@@ -19,16 +19,11 @@ export default function ContactoPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading
-            as="h1"
-            eyebrow="Contacto"
-            title="Pide cita para tu mascota"
-            description="Rellena el formulario y te confirmamos la cita, o llama directamente a la clínica que prefieras."
-          />
-        </Container>
-      </section>
+      <PageHero
+        title="Pide cita"
+        accent="para tu mascota."
+        description="Rellena el formulario y te confirmamos la cita, o llama directamente a la clínica que prefieras."
+      />
 
       <Section>
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start lg:gap-14">

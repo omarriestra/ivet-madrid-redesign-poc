@@ -1,13 +1,9 @@
 import type { Metadata } from 'next';
-import { Section, SectionHeading } from '@/components/ui/Section';
-import { Container } from '@/components/ui/Container';
+import { Section } from '@/components/ui/Section';
+import { PageHero } from '@/components/blocks/PageHero';
 import { CtaBand } from '@/components/blocks/CtaBand';
-import { getServices } from '@/lib/content';
-import {
-  IconPaw,
-  IconPhone,
-  IconShield,
-} from '@/components/ui/Icons';
+import { getClinics, getServices } from '@/lib/content';
+import { IconPhone } from '@/components/ui/Icons';
 
 export const metadata: Metadata = {
   title: 'Servicios veterinarios',
@@ -17,51 +13,56 @@ export const metadata: Metadata = {
 
 export default function ServiciosPage() {
   const services = getServices();
+  const clinics = getClinics();
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading
-            as="h1"
-            eyebrow="Servicios"
-            title="Tus seres queridos, primero"
-            description="Ofrecemos una amplia gama de servicios veterinarios diseñados para garantizar el bienestar y la salud de tu mascota en cada etapa de su vida, desde consultas de rutina y diagnósticos avanzados hasta cirugías especializadas y cuidados preventivos."
-          />
-        </Container>
-      </section>
+      <PageHero
+        title="De la vacuna anual"
+        accent="al quirófano."
+        description="Trece servicios para que tu mascota no tenga que salir del barrio para recibir la atención que necesita, en cada etapa de su vida."
+      />
 
       <Section>
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Lista tipografica, no rejilla de tarjetas: los servicios se leen
+            como la carta de una consulta, con la urgencia destacada arriba. */}
+        <ul className="border-b border-bone-300">
           {services.map((service) => {
             const isEmergency = service.slug === 'urgencias';
             return (
               <li
                 key={service.slug}
                 id={service.slug}
-                className={`reveal scroll-mt-28 rounded-2xl border p-6 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-xl hover:shadow-charcoal-950/8 ${
-                  isEmergency
-                    ? 'border-amber-500/40 bg-amber-100/50 hover:border-amber-500'
-                    : 'border-bone-200 bg-white hover:border-sage-400'
-                }`}
+                className="reveal scroll-mt-28 border-t border-bone-300 py-7 sm:py-8"
               >
-                <span
-                  className={`flex h-12 w-12 items-center justify-center rounded-xl ${
-                    isEmergency ? 'bg-amber-600 text-white' : 'bg-sage-100 text-sage-700'
-                  }`}
-                >
-                  {isEmergency ? (
-                    <IconPhone className="h-6 w-6" />
-                  ) : service.slug === 'medicina-preventiva' ? (
-                    <IconShield className="h-6 w-6" />
-                  ) : (
-                    <IconPaw className="h-6 w-6" />
-                  )}
-                </span>
-                <h2 className="mt-5 text-xl">{service.name}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-charcoal-900/75">
-                  {service.description}
-                </p>
+                <div className="grid gap-3 lg:grid-cols-12 lg:gap-8">
+                  <h2
+                    className={`font-display text-2xl font-semibold sm:text-3xl lg:col-span-5 ${
+                      isEmergency ? 'text-amber-700' : ''
+                    }`}
+                  >
+                    {service.name}
+                  </h2>
+                  <p className="text-base leading-relaxed text-charcoal-900/75 lg:col-span-7 lg:pt-1.5">
+                    {service.description}
+                  </p>
+                </div>
+
+                {isEmergency && (
+                  <div className="mt-5 flex flex-wrap gap-2.5">
+                    {clinics.map((clinic) => (
+                      <a
+                        key={clinic.slug}
+                        href={`tel:${clinic.emergencyPhoneHref}`}
+                        className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-amber-600 px-5 py-2.5 font-semibold text-white transition-all duration-200 ease-out-soft hover:-translate-y-0.5 hover:bg-amber-700 active:translate-y-0"
+                      >
+                        <IconPhone className="h-5 w-5" />
+                        <span className="text-sm">{clinic.shortName}</span>
+                        <span className="tabular-nums">{clinic.emergencyPhone}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </li>
             );
           })}

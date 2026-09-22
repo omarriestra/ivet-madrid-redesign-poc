@@ -20,7 +20,7 @@ export default function NotFound() {
         <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-sage-100">
           <IconPaw className="h-10 w-10 text-sage-700" />
         </span>
-        <p className="mt-8 font-serif text-6xl font-semibold text-sage-400">404</p>
+        <p className="mt-8 font-serif text-6xl font-semibold text-sage-700">404</p>
         <h1 className="mt-4 text-3xl sm:text-4xl">Esta página se nos ha escapado</h1>
         <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-charcoal-900/75">
           No hemos encontrado lo que buscabas. Puede que el enlace haya cambiado o que la

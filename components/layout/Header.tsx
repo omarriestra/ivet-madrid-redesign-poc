@@ -29,8 +29,11 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Cierra el menu al navegar.
-  useEffect(() => setOpen(false), [pathname]);
+  // Cierra el menu al navegar. Se hace en el efecto de limpieza del pathname
+  // anterior para no encadenar un render extra en cada navegacion.
+  useEffect(() => {
+    return () => setOpen(false);
+  }, [pathname]);
 
   // Bloquea el scroll de fondo y permite cerrar con Escape.
   useEffect(() => {
@@ -91,7 +94,7 @@ export function Header() {
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
                     className={cn(
-                      'relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-200',
+                      'relative flex min-h-11 items-center rounded-full px-3.5 py-2.5 text-sm font-medium transition-colors duration-200',
                       active
                         ? 'text-charcoal-950'
                         : 'text-charcoal-900/70 hover:text-charcoal-950',
@@ -100,7 +103,7 @@ export function Header() {
                     {item.label}
                     <span
                       className={cn(
-                        'absolute inset-x-3.5 -bottom-0.5 h-px origin-left bg-sage-1000 transition-transform duration-300 ease-out-soft',
+                        'absolute inset-x-3.5 -bottom-0.5 h-px origin-left bg-sage-700 transition-transform duration-300 ease-out-soft',
                         active ? 'scale-x-100' : 'scale-x-0',
                       )}
                     />

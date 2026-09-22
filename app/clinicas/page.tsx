@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Section, SectionHeading } from '@/components/ui/Section';
-import { Container } from '@/components/ui/Container';
+import { Section } from '@/components/ui/Section';
+import { PageHero } from '@/components/blocks/PageHero';
 import { ClinicCard } from '@/components/blocks/ClinicCard';
 import { EmergencyStrip } from '@/components/blocks/EmergencyStrip';
 import { ScheduleTable } from '@/components/blocks/ScheduleTable';
@@ -17,16 +17,11 @@ export default function ClinicasPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading
-            as="h1"
-            eyebrow="Clínicas"
-            title="Cerca de ti, en cuatro puntos de Madrid"
-            description="Un mismo equipo y una misma forma de cuidar en Chamberí, Malasaña, Las Rozas y El Burgo. Elige la clínica que mejor te venga."
-          />
-        </Container>
-      </section>
+      <PageHero
+        title="Cuatro clínicas de barrio,"
+        accent="un mismo equipo."
+        description="Chamberí, Malasaña, Las Rozas y El Burgo. Elige la que mejor te venga: llama o escríbenos por WhatsApp."
+      />
 
       <Section>
         <ul className="grid gap-6 sm:grid-cols-2">

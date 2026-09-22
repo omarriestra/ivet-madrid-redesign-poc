@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Section, SectionHeading } from '@/components/ui/Section';
-import { Container } from '@/components/ui/Container';
+import { Section } from '@/components/ui/Section';
+import { PageHero } from '@/components/blocks/PageHero';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import { getProducts, getClinics } from '@/lib/content';
 import { IconPaw, IconShield } from '@/components/ui/Icons';
@@ -26,16 +26,11 @@ export default function TiendaPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
-        <Container>
-          <SectionHeading
-            as="h1"
-            eyebrow="Alimentación y productos"
-            title="Dietas y cuidado, con criterio veterinario"
-            description="Trabajamos con dietas veterinarias y productos de cuidado que recomendamos según el diagnóstico de cada paciente. Pregúntanos en consulta y te orientamos."
-          />
-        </Container>
-      </section>
+      <PageHero
+        title="Dietas y cuidado,"
+        accent="con criterio veterinario."
+        description="Trabajamos con dietas veterinarias y productos que recomendamos según el diagnóstico de cada paciente. Pregúntanos en consulta y te orientamos."
+      />
 
       <Section>
         <div className="mb-8 flex flex-wrap gap-2">
@@ -91,7 +86,7 @@ export default function TiendaPage() {
             ))}
             .
           </p>
-          <p className="mt-4 text-xs text-amber-700/75">
+          <p className="mt-4 text-xs text-amber-700">
             Demostración: esta página no permite comprar. Una tienda real con pagos,
             stock y envíos se puede añadir en una fase posterior.
           </p>
