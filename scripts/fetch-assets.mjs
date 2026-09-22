@@ -105,6 +105,27 @@ async function main() {
   if (logoUrl) await saveImage(logoUrl, 'brand', 'ivet-logo', { width: 600 });
   else failures.push('brand/ivet-logo: no se encontro el logotipo en el HTML');
 
+  // ------------------------------------------------------------ fotografia
+  // Fotografia editorial que ya existe en la biblioteca de medios del cliente
+  // pero que su web actual apenas usa. Es el material que sostiene el diseno.
+  console.log('· Fotografia editorial...');
+  const editorial = {
+    // Retratos de estudio de mascotas (los mejores activos de la marca)
+    'labrador': { path: '2025/02/IVET-Rios-ROSAS-2-1.png', width: 1400 },
+    'pastor-aleman': { path: '2026/01/aleman.jpg', width: 1200 },
+    'dobermann': { path: '2026/01/cabecera-doverman.jpg', width: 1200 },
+    // Equipo en contexto
+    'equipo-1': { path: '2026/01/WhatsApp-Image-2026-01-20-at-14.23.38.jpeg', width: 1200 },
+    'equipo-2': { path: '2026/01/WhatsApp-Image-2026-01-20-at-14.23.39.jpeg', width: 1200 },
+    'equipo-3': { path: '2026/01/WhatsApp-Image-2026-01-20-at-14.23.39-1.jpeg', width: 1200 },
+    'equipo-4': { path: '2026/01/WhatsApp-Image-2026-01-20-at-14.23.40.jpeg', width: 1200 },
+  };
+  for (const [name, cfg] of Object.entries(editorial)) {
+    await saveImage(`${SITE}/wp-content/uploads/${cfg.path}`, 'editorial', name, {
+      width: cfg.width,
+    });
+  }
+
   // --------------------------------------------------------------- servicios
   console.log('· Imagenes de servicios...');
   const serviceImages = {

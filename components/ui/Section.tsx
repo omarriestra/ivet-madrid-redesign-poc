@@ -39,7 +39,7 @@ export function SectionHeading({
   return (
     <div className={cn('max-w-2xl', align === 'center' && 'mx-auto text-center')}>
       {eyebrow && (
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-petrol-500">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-sage-700">
           {eyebrow}
         </p>
       )}
@@ -47,7 +47,7 @@ export function SectionHeading({
         {title}
       </Tag>
       {description && (
-        <p className="mt-4 text-lg leading-relaxed text-petrol-800/80">{description}</p>
+        <p className="mt-4 text-lg leading-relaxed text-charcoal-900/80">{description}</p>
       )}
     </div>
   );

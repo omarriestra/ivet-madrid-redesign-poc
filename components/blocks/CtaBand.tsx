@@ -12,15 +12,15 @@ export function CtaBand({
   return (
     <section className="py-16 sm:py-20">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl bg-petrol-700 px-6 py-14 text-center sm:px-12 sm:py-16">
+        <div className="relative overflow-hidden rounded-3xl bg-charcoal-900 px-6 py-14 text-center sm:px-12 sm:py-16">
           {/* Textura decorativa, puramente visual */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-petrol-600/50 blur-2xl"
+            className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-sage-600/50 blur-2xl"
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-petrol-800/60 blur-2xl"
+            className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-charcoal-900/60 blur-2xl"
           />
           <div className="relative">
             <h2 className="mx-auto max-w-xl text-3xl text-bone-50 sm:text-4xl">{title}</h2>

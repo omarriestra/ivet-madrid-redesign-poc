@@ -38,15 +38,15 @@ export function ContactForm() {
       <div
         ref={confirmationRef}
         tabIndex={-1}
-        className="rounded-2xl border border-petrol-300/60 bg-white p-8 text-center"
+        className="rounded-2xl border border-sage-400/60 bg-white p-8 text-center"
       >
-        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-petrol-100">
-          <IconCheck className="h-7 w-7 text-petrol-700" />
+        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage-100">
+          <IconCheck className="h-7 w-7 text-charcoal-900" />
         </span>
         <h3 className="mt-5 text-2xl">
           Gracias{values.nombre ? `, ${values.nombre.split(' ')[0]}` : ''}
         </h3>
-        <p className="mx-auto mt-3 max-w-md text-petrol-800/75">
+        <p className="mx-auto mt-3 max-w-md text-charcoal-900/75">
           Hemos recibido tu solicitud{clinic ? ` para ${clinic.name}` : ''}. Te
           responderemos en horario de clínica para confirmar la cita.
         </p>
@@ -148,7 +148,7 @@ export function ContactForm() {
       </div>
 
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-sm text-xs leading-relaxed text-petrol-800/60">
+        <p className="max-w-sm text-xs leading-relaxed text-charcoal-900/60">
           Demostración: al enviar no se transmite ningún dato. Para urgencias, llama por
           teléfono.
         </p>
@@ -161,7 +161,7 @@ export function ContactForm() {
 }
 
 const inputClass =
-  'w-full rounded-xl border border-bone-300 bg-bone-50/60 px-4 py-3 text-base text-petrol-900 transition-colors duration-200 placeholder:text-petrol-800/40 hover:border-petrol-300 focus:border-petrol-500 focus:bg-white focus:outline-none';
+  'w-full rounded-xl border border-bone-300 bg-bone-50/60 px-4 py-3 text-base text-charcoal-950 transition-colors duration-200 placeholder:text-charcoal-900/40 hover:border-sage-400 focus:border-sage-600 focus:bg-white focus:outline-none';
 
 function Field({
   id,
@@ -180,7 +180,7 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={id} className="block text-sm font-medium text-petrol-900">
+      <label htmlFor={id} className="block text-sm font-medium text-charcoal-950">
         {label}
         {required && (
           <span className="ml-1 text-amber-600" aria-hidden>
@@ -189,7 +189,7 @@ function Field({
         )}
         {required && <span className="sr-only"> (obligatorio)</span>}
       </label>
-      {hint && <p className="mt-1 text-xs text-petrol-800/60">{hint}</p>}
+      {hint && <p className="mt-1 text-xs text-charcoal-900/60">{hint}</p>}
       <div className="mt-2">{children}</div>
     </div>
   );

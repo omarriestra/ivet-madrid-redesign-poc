@@ -1,8 +1,28 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-
 @theme {
-  /* Azul petroleo: color clinico de marca (coincide con el uniforme del equipo) */
+  /* Gris carbon: el fondo del logotipo de IVET. Hace el trabajo pesado. */
+  --color-charcoal-950: #1c1c1a;
+  --color-charcoal-900: #232322;
+  --color-charcoal-800: #2e2e2c;
+  --color-charcoal-700: #3d3d3a;
+  --color-charcoal-600: #55554f;
+
+  /* Verde salvia: el color del logotipo. Se usa con disciplina, como acento.
+     sage-500 luce sobre carbon; sobre fondo claro, el texto pequeno necesita
+     sage-700 para cumplir contraste AA (sage-600 solo da 2.6:1 sobre bone-50). */
+  --color-sage-700: #437045;
+  --color-sage-600: #6fa870;
+  --color-sage-500: #8cc08c;
+  --color-sage-400: #a3cfa3;
+  --color-sage-200: #cfe5cf;
+  --color-sage-100: #e4f0e4;
+
+  /* Blanco roto: fondo de pagina, da aire al conjunto. */
+  --color-bone-50: #f7f5f0;
+  --color-bone-100: #f1eee7;
+  --color-bone-200: #e8e4da;
+  --color-bone-300: #d6d0c2;
+
+  /* Azul petroleo: el uniforme real del equipo. Solo en contexto documental. */
   --color-petrol-900: #0f2f3d;
   --color-petrol-800: #123d4d;
   --color-petrol-700: #17505f;
@@ -12,13 +32,7 @@
   --color-petrol-100: #dceaee;
   --color-petrol-50: #eff6f8;
 
-  /* Blanco roto: fondo editorial, mas calido que el blanco puro */
-  --color-bone-50: #faf8f4;
-  --color-bone-100: #f5f1ea;
-  --color-bone-200: #ede8e0;
-  --color-bone-300: #ddd5c8;
-
-  /* Acento calido: urgencias y llamadas a la accion */
+  /* Ambar: reservado a urgencias, donde debe destacar sobre todo lo demas. */
   --color-amber-100: #f7e8d8;
   --color-amber-500: #c8762e;
   --color-amber-600: #a85f1e;
@@ -27,7 +41,7 @@
   --font-serif: var(--font-fraunces), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
 
-  /* Escala tipografica fluida, base 16px, ratio ~1.25 */
+  /* Escala tipografica fluida, base 16px */
   --text-xs: 0.8125rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -37,6 +51,8 @@
   --text-3xl: clamp(1.875rem, 1.6rem + 1.2vw, 2.25rem);
   --text-4xl: clamp(2.25rem, 1.85rem + 1.9vw, 3rem);
   --text-5xl: clamp(2.75rem, 2.1rem + 3vw, 4rem);
+  --text-6xl: clamp(3.25rem, 2.2rem + 4.6vw, 5.5rem);
+  --text-7xl: clamp(3.75rem, 2.2rem + 6.5vw, 7rem);
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -51,7 +67,7 @@
 
   body {
     background-color: var(--color-bone-50);
-    color: var(--color-petrol-900);
+    color: var(--color-charcoal-950);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -70,14 +86,14 @@
 
   /* Foco visible y consistente en todo el sitio (accesibilidad de teclado) */
   :focus-visible {
-    outline: 3px solid var(--color-amber-600);
+    outline: 3px solid var(--color-sage-600);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
   ::selection {
-    background-color: var(--color-petrol-100);
-    color: var(--color-petrol-900);
+    background-color: var(--color-sage-200);
+    color: var(--color-charcoal-950);
   }
 }
 

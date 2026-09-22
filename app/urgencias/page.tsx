@@ -30,7 +30,7 @@ export default function UrgenciasPage() {
 
   return (
     <>
-      <section className="bg-petrol-900 py-16 text-bone-50 sm:py-20">
+      <section className="bg-charcoal-950 py-16 text-bone-50 sm:py-20">
         <Container>
           <p className="inline-flex items-center gap-2 rounded-full bg-amber-600 px-4 py-1.5 text-sm font-semibold">
             <span className="relative flex h-2 w-2">
@@ -99,7 +99,7 @@ export default function UrgenciasPage() {
               {warningSigns.map((sign) => (
                 <li
                   key={sign}
-                  className="flex gap-3 rounded-xl border border-bone-200 bg-white p-4 text-sm leading-relaxed text-petrol-800/80"
+                  className="flex gap-3 rounded-xl border border-bone-200 bg-white p-4 text-sm leading-relaxed text-charcoal-900/80"
                 >
                   <span
                     aria-hidden
@@ -119,7 +119,7 @@ export default function UrgenciasPage() {
             <ScheduleTable title="Horario de las clínicas" />
             <div className="rounded-2xl border border-bone-200 bg-white p-6">
               <h2 className="font-serif text-lg font-semibold">Fuera de horario</h2>
-              <p className="mt-3 text-sm leading-relaxed text-petrol-800/75">
+              <p className="mt-3 text-sm leading-relaxed text-charcoal-900/75">
                 El teléfono de urgencias atiende las 24 horas. Si llamas cuando la clínica
                 está cerrada, te orientamos sobre cómo actuar y te indicamos el centro de
                 referencia más adecuado.

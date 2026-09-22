@@ -20,7 +20,7 @@ export default function ServiciosPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-petrol-50 to-bone-50 py-16 sm:py-20">
+      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
         <Container>
           <SectionHeading
             as="h1"
@@ -39,15 +39,15 @@ export default function ServiciosPage() {
               <li
                 key={service.slug}
                 id={service.slug}
-                className={`reveal scroll-mt-28 rounded-2xl border p-6 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-xl hover:shadow-petrol-900/5 ${
+                className={`reveal scroll-mt-28 rounded-2xl border p-6 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:shadow-xl hover:shadow-charcoal-950/8 ${
                   isEmergency
                     ? 'border-amber-500/40 bg-amber-100/50 hover:border-amber-500'
-                    : 'border-bone-200 bg-white hover:border-petrol-300'
+                    : 'border-bone-200 bg-white hover:border-sage-400'
                 }`}
               >
                 <span
                   className={`flex h-12 w-12 items-center justify-center rounded-xl ${
-                    isEmergency ? 'bg-amber-600 text-white' : 'bg-petrol-50 text-petrol-600'
+                    isEmergency ? 'bg-amber-600 text-white' : 'bg-sage-100 text-sage-700'
                   }`}
                 >
                   {isEmergency ? (
@@ -59,7 +59,7 @@ export default function ServiciosPage() {
                   )}
                 </span>
                 <h2 className="mt-5 text-xl">{service.name}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-petrol-800/75">
+                <p className="mt-3 text-sm leading-relaxed text-charcoal-900/75">
                   {service.description}
                 </p>
               </li>
@@ -67,7 +67,7 @@ export default function ServiciosPage() {
           })}
         </ul>
 
-        <p className="mt-10 text-sm text-petrol-800/60">
+        <p className="mt-10 text-sm text-charcoal-900/60">
           La disponibilidad de cada servicio puede variar según la clínica. Consúltanos y
           te indicamos el centro más adecuado.
         </p>

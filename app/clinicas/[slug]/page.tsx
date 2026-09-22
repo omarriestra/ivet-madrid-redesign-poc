@@ -52,27 +52,27 @@ export default async function ClinicaPage({
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-petrol-50 to-bone-50 py-14 sm:py-20">
+      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-14 sm:py-20">
         <Container>
-          <nav aria-label="Migas de pan" className="mb-6 text-sm text-petrol-800/60">
+          <nav aria-label="Migas de pan" className="mb-6 text-sm text-charcoal-900/60">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
-                <Link href="/clinicas" className="hover:text-petrol-900">
+                <Link href="/clinicas" className="hover:text-charcoal-950">
                   Clínicas
                 </Link>
               </li>
               <li aria-hidden>/</li>
-              <li className="text-petrol-900">{clinic.shortName}</li>
+              <li className="text-charcoal-950">{clinic.shortName}</li>
             </ol>
           </nav>
 
           <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-start lg:gap-16">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-petrol-500">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sage-700">
                 {clinic.neighbourhood}
               </p>
               <h1 className="mt-3 text-4xl sm:text-5xl">{clinic.name}</h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-petrol-800/80">
+              <p className="mt-5 max-w-xl text-lg leading-relaxed text-charcoal-900/80">
                 {clinic.blurb}
               </p>
 
@@ -93,8 +93,8 @@ export default async function ClinicaPage({
               <dl className="mt-5 space-y-4 text-sm">
                 <div className="flex gap-3">
                   <dt className="sr-only">Dirección</dt>
-                  <IconPin className="mt-0.5 h-5 w-5 shrink-0 text-petrol-500" />
-                  <dd className="text-petrol-800/80">
+                  <IconPin className="mt-0.5 h-5 w-5 shrink-0 text-sage-700" />
+                  <dd className="text-charcoal-900/80">
                     {clinic.address}
                     <br />
                     {clinic.postalCode} {clinic.city}
@@ -102,11 +102,11 @@ export default async function ClinicaPage({
                 </div>
                 <div className="flex gap-3">
                   <dt className="sr-only">Teléfono</dt>
-                  <IconPhone className="mt-0.5 h-5 w-5 shrink-0 text-petrol-500" />
+                  <IconPhone className="mt-0.5 h-5 w-5 shrink-0 text-sage-700" />
                   <dd>
                     <a
                       href={`tel:${clinic.phoneHref}`}
-                      className="font-medium tabular-nums text-petrol-900 hover:text-petrol-600"
+                      className="font-medium tabular-nums text-charcoal-950 hover:text-sage-700"
                     >
                       {clinic.phone}
                     </a>
@@ -114,11 +114,11 @@ export default async function ClinicaPage({
                 </div>
                 <div className="flex gap-3">
                   <dt className="sr-only">Correo electrónico</dt>
-                  <IconMail className="mt-0.5 h-5 w-5 shrink-0 text-petrol-500" />
+                  <IconMail className="mt-0.5 h-5 w-5 shrink-0 text-sage-700" />
                   <dd>
                     <a
                       href={`mailto:${clinic.email}`}
-                      className="break-all text-petrol-800/80 hover:text-petrol-600"
+                      className="break-all text-charcoal-900/80 hover:text-sage-700"
                     >
                       {clinic.email}
                     </a>
@@ -126,7 +126,7 @@ export default async function ClinicaPage({
                 </div>
                 <div className="flex gap-3">
                   <dt className="sr-only">WhatsApp</dt>
-                  <IconWhatsApp className="mt-0.5 h-5 w-5 shrink-0 text-petrol-500" />
+                  <IconWhatsApp className="mt-0.5 h-5 w-5 shrink-0 text-sage-700" />
                   <dd>
                     <a
                       href={whatsappUrl(
@@ -135,7 +135,7 @@ export default async function ClinicaPage({
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-petrol-800/80 hover:text-petrol-600"
+                      className="text-charcoal-900/80 hover:text-sage-700"
                     >
                       Escribir por WhatsApp
                     </a>
@@ -143,7 +143,7 @@ export default async function ClinicaPage({
                 </div>
               </dl>
 
-              <div className="mt-6 rounded-xl bg-petrol-900 p-4">
+              <div className="mt-6 rounded-xl bg-charcoal-950 p-4">
                 <p className="text-xs font-semibold uppercase tracking-wider text-amber-100">
                   {EMERGENCY_LABEL}
                 </p>
@@ -183,9 +183,9 @@ export default async function ClinicaPage({
               </li>
             ))}
           </ul>
-          <p className="mt-8 text-sm text-petrol-800/60">
+          <p className="mt-8 text-sm text-charcoal-900/60">
             Además, contamos con especialistas que atienden en todas nuestras clínicas.{' '}
-            <Link href="/equipo" className="font-medium text-petrol-600 underline">
+            <Link href="/equipo" className="font-medium text-sage-700 underline">
               Ver el equipo completo
             </Link>
             .
@@ -200,15 +200,15 @@ export default async function ClinicaPage({
             <li key={other.slug}>
               <Link
                 href={`/clinicas/${other.slug}`}
-                className="group block rounded-2xl border border-bone-200 bg-white p-5 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:border-petrol-300 hover:shadow-lg"
+                className="group block rounded-2xl border border-bone-200 bg-white p-5 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:border-sage-400 hover:shadow-lg"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-petrol-500">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-700">
                   {other.neighbourhood}
                 </p>
-                <p className="mt-1.5 font-serif text-lg font-semibold text-petrol-900">
+                <p className="mt-1.5 font-serif text-lg font-semibold text-charcoal-950">
                   {other.shortName}
                 </p>
-                <p className="mt-1 text-sm text-petrol-800/65">{other.address}</p>
+                <p className="mt-1 text-sm text-charcoal-900/65">{other.address}</p>
               </Link>
             </li>
           ))}

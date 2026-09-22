@@ -18,7 +18,7 @@ export default function SobreNosotrosPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-petrol-50 to-bone-50 py-16 sm:py-20">
+      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
         <Container>
           <SectionHeading
             as="h1"
@@ -30,7 +30,7 @@ export default function SobreNosotrosPage() {
       </section>
 
       <Section size="narrow">
-        <div className="space-y-6 text-lg leading-relaxed text-petrol-800/80">
+        <div className="space-y-6 text-lg leading-relaxed text-charcoal-900/80">
           {history.body.map((paragraph) => (
             <p key={paragraph.slice(0, 40)}>{paragraph}</p>
           ))}
@@ -45,18 +45,18 @@ export default function SobreNosotrosPage() {
               key={`${milestone.year}-${milestone.title}`}
               className="reveal relative rounded-2xl border border-bone-200 bg-bone-50 p-6"
             >
-              <span className="font-serif text-3xl font-semibold text-petrol-300">
+              <span className="font-serif text-3xl font-semibold text-sage-400">
                 {milestone.year}
               </span>
               <h3 className="mt-3 text-lg">{milestone.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-petrol-800/75">
+              <p className="mt-2 text-sm leading-relaxed text-charcoal-900/75">
                 {milestone.text}
               </p>
             </li>
           ))}
         </ol>
 
-        <dl className="mt-12 grid gap-6 rounded-2xl bg-petrol-900 p-8 text-bone-50 sm:grid-cols-3">
+        <dl className="mt-12 grid gap-6 rounded-2xl bg-charcoal-950 p-8 text-bone-50 sm:grid-cols-3">
           <div>
             <dt className="text-sm text-bone-100/65">Clínicas en Madrid</dt>
             <dd className="mt-1 font-serif text-4xl font-semibold">{clinics.length}</dd>
@@ -91,11 +91,11 @@ export default function SobreNosotrosPage() {
             </Button>
           </div>
           <div className="rounded-2xl border border-bone-200 bg-white p-8">
-            <p className="font-serif text-xl leading-relaxed text-petrol-900">
+            <p className="font-serif text-xl leading-relaxed text-charcoal-950">
               «Lo que comenzó desparasitando ovejas, cabras y vacas ha evolucionado en una
               misión que no solo cuida el ganado, sino también a las personas.»
             </p>
-            <p className="mt-5 text-sm text-petrol-800/65">
+            <p className="mt-5 text-sm text-charcoal-900/65">
               Proyecto {solidarityProject.name}, en una comunidad remota de Etiopía.
             </p>
           </div>
@@ -109,15 +109,15 @@ export default function SobreNosotrosPage() {
             <li key={clinic.slug}>
               <Link
                 href={`/clinicas/${clinic.slug}`}
-                className="group block rounded-2xl border border-bone-200 bg-white p-5 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:border-petrol-300 hover:shadow-lg"
+                className="group block rounded-2xl border border-bone-200 bg-white p-5 transition-all duration-300 ease-out-soft hover:-translate-y-1 hover:border-sage-400 hover:shadow-lg"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-petrol-500">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-700">
                   {clinic.neighbourhood}
                 </p>
                 <p className="mt-1.5 font-serif text-lg font-semibold">
                   {clinic.shortName}
                 </p>
-                <p className="mt-1 text-sm text-petrol-800/65">{clinic.address}</p>
+                <p className="mt-1 text-sm text-charcoal-900/65">{clinic.address}</p>
               </Link>
             </li>
           ))}

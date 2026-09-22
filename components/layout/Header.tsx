@@ -65,11 +65,11 @@ export function Header() {
             alt=""
             width={44}
             height={44}
-            className="h-10 w-10 rounded-lg bg-petrol-700 object-contain p-1"
+            className="h-10 w-10 rounded-lg bg-charcoal-900 object-contain p-1"
             priority
           />
-          <span className="font-serif text-xl font-semibold tracking-tight text-petrol-900">
-            IVET <span className="text-petrol-500">Madrid</span>
+          <span className="font-serif text-xl font-semibold tracking-tight text-charcoal-950">
+            IVET <span className="text-sage-700">Madrid</span>
           </span>
         </Link>
 
@@ -86,14 +86,14 @@ export function Header() {
                     className={cn(
                       'relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-200',
                       active
-                        ? 'text-petrol-900'
-                        : 'text-petrol-800/70 hover:text-petrol-900',
+                        ? 'text-charcoal-950'
+                        : 'text-charcoal-900/70 hover:text-charcoal-950',
                     )}
                   >
                     {item.label}
                     <span
                       className={cn(
-                        'absolute inset-x-3.5 -bottom-0.5 h-px origin-left bg-petrol-500 transition-transform duration-300 ease-out-soft',
+                        'absolute inset-x-3.5 -bottom-0.5 h-px origin-left bg-sage-1000 transition-transform duration-300 ease-out-soft',
                         active ? 'scale-x-100' : 'scale-x-0',
                       )}
                     />
@@ -118,7 +118,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-petrol-800 transition-colors hover:bg-petrol-50 lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-charcoal-900 transition-colors hover:bg-sage-100 lg:hidden"
             aria-expanded={open}
             aria-controls="menu-movil"
             aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
@@ -147,8 +147,8 @@ export function Header() {
                     className={cn(
                       'flex items-center justify-between rounded-xl px-4 py-3.5 text-lg font-medium transition-colors',
                       active
-                        ? 'bg-petrol-50 text-petrol-900'
-                        : 'text-petrol-800 hover:bg-petrol-50',
+                        ? 'bg-sage-100 text-charcoal-950'
+                        : 'text-charcoal-900 hover:bg-sage-100',
                     )}
                   >
                     {item.label}

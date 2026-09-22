@@ -9,15 +9,15 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-petrol-700 text-bone-50 hover:bg-petrol-800 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-petrol-900/15 active:translate-y-0',
+    'bg-charcoal-900 text-bone-50 hover:bg-charcoal-900 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-charcoal-950/20 active:translate-y-0',
   secondary:
-    'border border-petrol-300/70 bg-white/70 text-petrol-800 hover:border-petrol-500 hover:bg-white hover:-translate-y-0.5 active:translate-y-0',
+    'border border-sage-400/70 bg-white/70 text-charcoal-900 hover:border-sage-600 hover:bg-white hover:-translate-y-0.5 active:translate-y-0',
   // Secundario sobre fondos oscuros (hero, bandas de cierre).
   onDark:
     'border border-white/30 bg-white/10 text-bone-50 backdrop-blur-sm hover:border-white/50 hover:bg-white/20 hover:-translate-y-0.5 active:translate-y-0',
   emergency:
     'bg-amber-600 text-white hover:bg-amber-700 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-amber-700/25 active:translate-y-0',
-  ghost: 'text-petrol-700 hover:bg-petrol-50 hover:text-petrol-900',
+  ghost: 'text-charcoal-900 hover:bg-sage-100 hover:text-charcoal-950',
 };
 
 const sizes: Record<Size, string> = {

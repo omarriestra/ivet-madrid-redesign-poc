@@ -25,7 +25,7 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
           />
         ) : (
           /* PENDIENTE: sustituir por la fotografia real cuando el cliente la facilite. */
-          <div className="flex h-full w-full items-center justify-center bg-petrol-700">
+          <div className="flex h-full w-full items-center justify-center bg-charcoal-900">
             <span
               aria-hidden
               className="font-serif text-4xl font-semibold text-bone-50/90"
@@ -37,10 +37,10 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
         )}
       </div>
       <figcaption className="mt-4">
-        <p className="font-serif text-lg font-semibold text-petrol-900">{member.name}</p>
-        <p className="mt-1 text-sm leading-snug text-petrol-800/70">{member.role}</p>
+        <p className="font-serif text-lg font-semibold text-charcoal-950">{member.name}</p>
+        <p className="mt-1 text-sm leading-snug text-charcoal-900/70">{member.role}</p>
         {member.clinic && (
-          <p className="mt-1.5 inline-flex rounded-full bg-petrol-50 px-2.5 py-1 text-xs font-medium text-petrol-700">
+          <p className="mt-1.5 inline-flex rounded-full bg-sage-100 px-2.5 py-1 text-xs font-medium text-charcoal-900">
             {member.clinic}
           </p>
         )}

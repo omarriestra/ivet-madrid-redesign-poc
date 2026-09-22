@@ -6,7 +6,7 @@ export function EmergencyStrip({ compact = false }: { compact?: boolean }) {
   const clinics = getClinics();
 
   return (
-    <div className="rounded-2xl bg-petrol-900 p-6 sm:p-8">
+    <div className="rounded-2xl bg-charcoal-950 p-6 sm:p-8">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <h2 className="font-serif text-xl font-semibold text-bone-50 sm:text-2xl">
           {EMERGENCY_LABEL}

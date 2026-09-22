@@ -17,7 +17,7 @@ export default function ClinicasPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-petrol-50 to-bone-50 py-16 sm:py-20">
+      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
         <Container>
           <SectionHeading
             as="h1"

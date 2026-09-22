@@ -49,21 +49,21 @@ export default async function PostPage({
   return (
     <>
       <article>
-        <header className="border-b border-bone-200 bg-gradient-to-b from-petrol-50 to-bone-50 py-14 sm:py-16">
+        <header className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-14 sm:py-16">
           <Container size="narrow">
-            <nav aria-label="Migas de pan" className="mb-6 text-sm text-petrol-800/60">
+            <nav aria-label="Migas de pan" className="mb-6 text-sm text-charcoal-900/60">
               <ol className="flex flex-wrap items-center gap-2">
                 <li>
-                  <Link href="/blog" className="hover:text-petrol-900">
+                  <Link href="/blog" className="hover:text-charcoal-950">
                     Blog
                   </Link>
                 </li>
                 <li aria-hidden>/</li>
-                <li className="line-clamp-1 text-petrol-900">{post.title}</li>
+                <li className="line-clamp-1 text-charcoal-950">{post.title}</li>
               </ol>
             </nav>
             <h1 className="text-4xl leading-tight sm:text-5xl">{post.title}</h1>
-            <p className="mt-5 flex flex-wrap items-center gap-2 text-sm text-petrol-800/65">
+            <p className="mt-5 flex flex-wrap items-center gap-2 text-sm text-charcoal-900/65">
               <time dateTime={post.date}>{formatDate(post.date)}</time>
               <span aria-hidden>·</span>
               <span>{post.readingMinutes} min de lectura</span>
@@ -91,11 +91,11 @@ export default async function PostPage({
         <Section size="narrow" className="pt-12">
           {/* HTML ya saneado en build-time por scripts/fetch-assets.mjs */}
           <div
-            className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-petrol-900 prose-p:text-petrol-800/85 prose-li:text-petrol-800/85 prose-strong:text-petrol-900 prose-a:text-petrol-600 prose-a:underline-offset-2"
+            className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-charcoal-950 prose-p:text-charcoal-900/85 prose-li:text-charcoal-900/85 prose-strong:text-charcoal-950 prose-a:text-sage-700 prose-a:underline-offset-2"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
 
-          <p className="mt-12 rounded-2xl bg-petrol-50 px-6 py-5 text-sm leading-relaxed text-petrol-800/80">
+          <p className="mt-12 rounded-2xl bg-sage-100 px-6 py-5 text-sm leading-relaxed text-charcoal-900/80">
             Este artículo tiene carácter divulgativo y no sustituye una consulta
             veterinaria. Si tu mascota presenta síntomas, pide cita o llama a tu clínica.
           </p>

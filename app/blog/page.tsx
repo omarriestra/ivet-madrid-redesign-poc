@@ -20,7 +20,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-petrol-50 to-bone-50 py-16 sm:py-20">
+      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
         <Container>
           <SectionHeading
             as="h1"
@@ -55,15 +55,15 @@ export default function BlogPage() {
                   {featured.title}
                 </Link>
               </h2>
-              <p className="mt-3 flex items-center gap-2 text-sm text-petrol-800/60">
+              <p className="mt-3 flex items-center gap-2 text-sm text-charcoal-900/60">
                 <time dateTime={featured.date}>{formatDate(featured.date)}</time>
                 <span aria-hidden>·</span>
                 <span>{featured.readingMinutes} min de lectura</span>
               </p>
-              <p className="mt-5 text-lg leading-relaxed text-petrol-800/80">
+              <p className="mt-5 text-lg leading-relaxed text-charcoal-900/80">
                 {featured.excerpt}
               </p>
-              <span className="mt-7 inline-flex items-center gap-2 font-semibold text-petrol-600">
+              <span className="mt-7 inline-flex items-center gap-2 font-semibold text-sage-700">
                 Leer artículo
                 <IconArrow className="h-5 w-5 transition-transform duration-300 ease-out-soft group-hover:translate-x-1" />
               </span>

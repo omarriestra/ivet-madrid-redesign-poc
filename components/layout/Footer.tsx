@@ -29,7 +29,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto bg-petrol-900 text-bone-100">
+    <footer className="mt-auto bg-charcoal-950 text-bone-100">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr] lg:gap-16">
           <div>
@@ -58,7 +58,7 @@ export function Footer() {
                     href={`tel:${c.emergencyPhoneHref}`}
                     className="group inline-flex items-center gap-2 text-sm text-bone-100/80 transition-colors hover:text-white"
                   >
-                    <IconPhone className="h-4 w-4 text-petrol-300 transition-colors group-hover:text-amber-100" />
+                    <IconPhone className="h-4 w-4 text-sage-400 transition-colors group-hover:text-amber-100" />
                     <span className="font-medium">{c.shortName}</span>
                     <span className="tabular-nums">{c.emergencyPhone}</span>
                   </a>

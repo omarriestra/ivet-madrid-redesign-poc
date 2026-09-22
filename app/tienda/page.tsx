@@ -26,7 +26,7 @@ export default function TiendaPage() {
 
   return (
     <>
-      <section className="border-b border-bone-200 bg-gradient-to-b from-petrol-50 to-bone-50 py-16 sm:py-20">
+      <section className="border-b border-bone-200 bg-gradient-to-b from-sage-100 to-bone-50 py-16 sm:py-20">
         <Container>
           <SectionHeading
             as="h1"
@@ -42,7 +42,7 @@ export default function TiendaPage() {
           {categories.map((category) => (
             <span
               key={category}
-              className="rounded-full border border-bone-300 bg-white px-3.5 py-1.5 text-sm text-petrol-800/75"
+              className="rounded-full border border-bone-300 bg-white px-3.5 py-1.5 text-sm text-charcoal-900/75"
             >
               {category}
             </span>
@@ -53,9 +53,9 @@ export default function TiendaPage() {
           {products.map((product) => (
             <li
               key={product.name}
-              className="reveal flex items-start gap-4 rounded-2xl border border-bone-200 bg-white p-5 transition-colors duration-300 hover:border-petrol-300"
+              className="reveal flex items-start gap-4 rounded-2xl border border-bone-200 bg-white p-5 transition-colors duration-300 hover:border-sage-400"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-petrol-50 text-petrol-600">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sage-100 text-sage-700">
                 {product.category.toLowerCase().includes('dieta') ? (
                   <IconShield className="h-5 w-5" />
                 ) : (
@@ -63,13 +63,13 @@ export default function TiendaPage() {
                 )}
               </span>
               <div className="min-w-0">
-                <p className="text-xs font-semibold uppercase tracking-wider text-petrol-500">
+                <p className="text-xs font-semibold uppercase tracking-wider text-sage-700">
                   {product.brand}
                 </p>
-                <h2 className="mt-1 font-serif text-base font-semibold leading-snug text-petrol-900">
+                <h2 className="mt-1 font-serif text-base font-semibold leading-snug text-charcoal-950">
                   {product.name}
                 </h2>
-                <p className="mt-1 text-sm text-petrol-800/65">{product.category}</p>
+                <p className="mt-1 text-sm text-charcoal-900/65">{product.category}</p>
               </div>
             </li>
           ))}

@@ -17,12 +17,12 @@ export default function NotFound() {
   return (
     <section className="flex flex-1 items-center py-20 sm:py-28">
       <Container size="narrow" className="text-center">
-        <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-petrol-50">
-          <IconPaw className="h-10 w-10 text-petrol-500" />
+        <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-sage-100">
+          <IconPaw className="h-10 w-10 text-sage-700" />
         </span>
-        <p className="mt-8 font-serif text-6xl font-semibold text-petrol-300">404</p>
+        <p className="mt-8 font-serif text-6xl font-semibold text-sage-400">404</p>
         <h1 className="mt-4 text-3xl sm:text-4xl">Esta página se nos ha escapado</h1>
-        <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-petrol-800/75">
+        <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-charcoal-900/75">
           No hemos encontrado lo que buscabas. Puede que el enlace haya cambiado o que la
           página ya no exista.
         </p>
@@ -38,7 +38,7 @@ export default function NotFound() {
         </div>
 
         <nav aria-label="Páginas sugeridas" className="mt-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-petrol-500">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sage-700">
             Quizá buscabas
           </p>
           <ul className="mt-4 flex flex-wrap justify-center gap-2">
@@ -46,7 +46,7 @@ export default function NotFound() {
               <li key={s.href}>
                 <Link
                   href={s.href}
-                  className="inline-flex rounded-full border border-bone-300 bg-white px-4 py-2 text-sm text-petrol-800 transition-colors hover:border-petrol-300 hover:text-petrol-900"
+                  className="inline-flex rounded-full border border-bone-300 bg-white px-4 py-2 text-sm text-charcoal-900 transition-colors hover:border-sage-400 hover:text-charcoal-950"
                 >
                   {s.label}
                 </Link>
@@ -55,7 +55,7 @@ export default function NotFound() {
           </ul>
         </nav>
 
-        <div className="mt-12 rounded-2xl bg-petrol-900 p-6 text-left">
+        <div className="mt-12 rounded-2xl bg-charcoal-950 p-6 text-left">
           <p className="text-sm font-semibold text-amber-100">
             ¿Es una urgencia? Llama a tu clínica
           </p>
@@ -66,7 +66,7 @@ export default function NotFound() {
                   href={`tel:${c.emergencyPhoneHref}`}
                   className="inline-flex items-center gap-2 text-sm text-bone-100/80 hover:text-white"
                 >
-                  <IconPhone className="h-4 w-4 text-petrol-300" />
+                  <IconPhone className="h-4 w-4 text-sage-400" />
                   <span className="font-medium">{c.shortName}</span>
                   <span className="tabular-nums">{c.emergencyPhone}</span>
                 </a>
