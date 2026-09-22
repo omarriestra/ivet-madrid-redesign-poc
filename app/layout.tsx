@@ -24,8 +24,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
+    // La marca va primero: en una pestana estrecha lo unico que se lee son
+    // los primeros caracteres, y ahi debe estar el nombre de la clinica.
     default: `${site.name} · Clínicas veterinarias en Madrid`,
-    template: `%s · ${site.name}`,
+    template: `${site.name} · %s`,
   },
   description: site.description,
   openGraph: {

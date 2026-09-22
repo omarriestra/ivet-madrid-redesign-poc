@@ -21,9 +21,10 @@ import {
 } from '@/lib/content';
 import { cn, whatsappUrl } from '@/lib/utils';
 import { ActionButton, EmergencyPulse } from '@/components/ui/ActionButton';
+import { TeamCarousel } from '@/components/blocks/TeamCarousel';
 
 export const metadata: Metadata = {
-  title: 'Clínicas veterinarias en Madrid con urgencias telefónicas 24 h',
+  // Sin `title` propio: hereda el del layout, que ya empieza por la marca.
   description: site.description,
   alternates: { canonical: '/' },
 };
@@ -51,14 +52,6 @@ function HeroLine({
     </span>
   );
 }
-
-/** Fotografias de equipo en contexto (bata azul IVET, fondo neutro). */
-const TEAM_IN_CONTEXT = [
-  '/images/editorial/equipo-1.webp',
-  '/images/editorial/equipo-2.webp',
-  '/images/editorial/equipo-3.webp',
-  '/images/editorial/equipo-4.webp',
-];
 
 /* -------------------------------------------------------------------------- */
 /*  Portada                                                                   */
@@ -353,29 +346,14 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Cuatro personas reales con la bata azul. Fotografia como copia
-              en papel sobre carbon: sin borde, sin tarjeta, con desnivel. */}
-          <ul className="reveal mt-12 grid grid-cols-2 gap-3 sm:mt-16 sm:grid-cols-4 sm:gap-4 sm:pb-10 lg:gap-6">
-            {TEAM_IN_CONTEXT.map((src, i) => (
-              <li
-                key={src}
-                className={cn(
-                  'group relative aspect-[3/4] overflow-hidden bg-charcoal-800',
-                  i % 2 === 1 && 'mt-8 sm:mt-0 sm:translate-y-10',
-                )}
-              >
-                <Image
-                  src={src}
-                  alt="Miembro del equipo de IVET Madrid con el uniforme azul de la clínica"
-                  fill
-                  sizes="(min-width: 1024px) 22vw, (min-width: 640px) 24vw, 45vw"
-                  className="object-cover object-top transition-transform duration-300 ease-out-soft group-hover:scale-[1.03]"
-                />
-              </li>
-            ))}
-          </ul>
+          {/* Carrusel con las 16 personas. Se desliza con el dedo en movil y
+              con las flechas en escritorio; al pulsar una tarjeta gira y
+              muestra quien es. */}
+          <div className="reveal mt-12 sm:mt-16">
+            <TeamCarousel members={team} />
+          </div>
 
-          <p className="mt-10 sm:mt-6">
+          <p className="mt-8">
             <Link
               href="/equipo"
               className="link-grow inline-flex items-center gap-2 font-serif text-xl font-semibold text-bone-50 [--underline:var(--color-sage-500)] [--underline-h:2px] sm:text-2xl"
