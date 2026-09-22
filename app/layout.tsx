@@ -9,6 +9,9 @@ const fraunces = Fraunces({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-fraunces',
+  // La italica real: el diseno la usa en los titulares y sin esto el navegador
+  // la sintetiza inclinando la roman, que empasta los remates de Fraunces.
+  style: ['normal', 'italic'],
   axes: ['SOFT', 'WONK', 'opsz'],
 });
 

@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
 @theme {
   /* Gris carbon: el fondo del logotipo de IVET. Hace el trabajo pesado. */
   --color-charcoal-950: #1c1c1a;
@@ -144,5 +147,66 @@
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------------ */
+/*  Portada: utilidades tipograficas y microanimaciones                      */
+/* ------------------------------------------------------------------------ */
+@layer utilities {
+  /* Fraunces como imagen: terminales suaves (SOFT) y formas "wonky" (WONK)
+     en titulares grandes. La opsz la gestiona el navegador. */
+  .font-display {
+    font-variation-settings: 'SOFT' 70, 'WONK' 1;
+    font-optical-sizing: auto;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+  }
+
+  /* Titular del hero: las lineas entran escalonadas (60 ms entre ellas),
+     solo en la carga inicial. `--i` es el indice de linea. */
+  .hero-line {
+    animation: hero-rise 800ms var(--ease-out-soft) both;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.5em);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Subrayado que crece desde la izquierda (200 ms). Funciona en varias
+     lineas porque es un fondo del elemento en linea, no un pseudo-elemento. */
+  .link-grow {
+    background-image: linear-gradient(
+      var(--underline, currentColor),
+      var(--underline, currentColor)
+    );
+    background-size: 0% var(--underline-h, 1px);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 200ms var(--ease-out-soft);
+  }
+
+  .link-grow:hover,
+  .link-grow:focus-visible,
+  .group:hover .link-grow,
+  .group:focus-within .link-grow {
+    background-size: 100% var(--underline-h, 1px);
+  }
+}
+
+/* Sin movimiento: el titular aparece de golpe, sin esperar los retardos. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-line {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
   }
 }

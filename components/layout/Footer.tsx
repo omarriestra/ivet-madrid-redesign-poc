@@ -165,7 +165,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-8 rounded-xl bg-white/5 px-4 py-3 text-xs leading-relaxed text-bone-100/50">
+        <p className="mt-8 rounded-xl bg-white/5 px-4 py-3 text-xs leading-relaxed text-bone-100/75">
           Prueba de concepto de rediseño, sin relación comercial ni operativa con la web
           en producción. Los textos e imágenes pertenecen a IVET Madrid y se muestran
           únicamente a efectos de propuesta. Los formularios no envían datos.
