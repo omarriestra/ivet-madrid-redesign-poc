@@ -3,7 +3,11 @@ import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
-import { IconArrow, IconPhone } from '@/components/ui/Icons';
+import {
+  IconArrow,
+  IconPhone,
+  IconWhatsApp,
+} from '@/components/ui/Icons';
 import {
   EMERGENCY_LABEL,
   EMERGENCY_NOTE,
@@ -15,7 +19,8 @@ import {
   site,
   solidarityProject,
 } from '@/lib/content';
-import { cn } from '@/lib/utils';
+import { cn, whatsappUrl } from '@/lib/utils';
+import { ActionButton, EmergencyPulse } from '@/components/ui/ActionButton';
 
 export const metadata: Metadata = {
   title: 'Clínicas veterinarias en Madrid con urgencias telefónicas 24 h',
@@ -99,9 +104,9 @@ export default function HomePage() {
 
         <div className="relative mx-auto flex min-h-[calc(100svh-4.5rem)] max-w-7xl flex-col justify-end px-4 pb-8 pt-72 sm:px-6 sm:pt-80 lg:min-h-[min(calc(100svh-4.5rem),56rem)] lg:justify-center lg:px-8 lg:py-24">
           <div className="max-w-2xl xl:max-w-3xl">
-            <p className="hero-line mb-5 text-sm font-medium tracking-wide text-bone-100/75 sm:text-base">
-              {EMERGENCY_LABEL}
-            </p>
+            <div className="hero-line mb-5">
+              <EmergencyPulse label={EMERGENCY_LABEL} />
+            </div>
 
             <h1
               id="hero-title"
@@ -120,13 +125,17 @@ export default function HomePage() {
               className="hero-line mt-8 flex flex-wrap gap-3 sm:mt-10"
               style={{ '--i': 6 } as CSSProperties}
             >
-              <Button href="#urgencias" variant="emergency" size="lg">
-                <IconPhone className="h-5 w-5" />
-                Urgencias
-              </Button>
-              <Button href="/contacto" variant="onDark" size="lg">
+              <ActionButton
+                href="#urgencias"
+                tone="emergency"
+                icon={<IconPhone className="h-6 w-6" />}
+                subtitle="Cuatro teléfonos, 24 h"
+              >
+                Llamar ahora
+              </ActionButton>
+              <ActionButton href="/contacto" tone="outline">
                 Pedir cita
-              </Button>
+              </ActionButton>
             </div>
           </div>
         </div>
@@ -242,33 +251,58 @@ export default function HomePage() {
             {clinics.map((clinic) => (
               <li
                 key={clinic.slug}
-                className="group relative grid grid-cols-[1fr_auto] items-center gap-x-4 border-t border-bone-300 py-5 sm:py-6"
+                className="group border-t border-bone-300 py-5 sm:py-6"
               >
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-charcoal-900/55">
-                    {clinic.name}
-                  </p>
-                  <h3 className="mt-1.5 text-3xl font-semibold sm:text-4xl">
-                    <Link
-                      href={`/clinicas/${clinic.slug}`}
-                      className="link-grow [--underline:var(--color-sage-600)] [--underline-h:2px] after:absolute after:inset-0"
-                    >
-                      {clinic.neighbourhood}
-                    </Link>
-                  </h3>
-                  <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-charcoal-900/70">
-                    <span>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-charcoal-900/55">
+                      {clinic.name}
+                    </p>
+                    <h3 className="mt-1.5 text-3xl font-semibold sm:text-4xl">
+                      <Link
+                        href={`/clinicas/${clinic.slug}`}
+                        className="link-grow [--underline:var(--color-sage-600)] [--underline-h:2px]"
+                      >
+                        {clinic.neighbourhood}
+                      </Link>
+                    </h3>
+                    <p className="mt-2 text-sm text-charcoal-900/70">
                       {clinic.address}, {clinic.postalCode} {clinic.city}
-                    </span>
-                    <a
-                      href={`tel:${clinic.phoneHref}`}
-                      className="link-grow relative z-10 font-medium tabular-nums text-charcoal-950"
-                    >
-                      {clinic.phone}
-                    </a>
-                  </p>
+                    </p>
+                  </div>
+                  <IconArrow
+                    aria-hidden
+                    className="mt-8 hidden h-6 w-6 shrink-0 text-sage-700 transition-transform duration-300 ease-out-soft group-hover:translate-x-1.5 sm:block"
+                  />
                 </div>
-                <IconArrow className="h-6 w-6 text-sage-700 transition-transform duration-300 ease-out-soft group-hover:translate-x-1.5" />
+
+                {/* Llamar y WhatsApp directos, como en la web actual: dos
+                    acciones grandes por clinica, sin pasos intermedios. */}
+                <div className="mt-4 flex flex-wrap gap-2.5">
+                  <a
+                    href={`tel:${clinic.phoneHref}`}
+                    className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-charcoal-950 px-5 py-2.5 font-semibold text-bone-50 transition-all duration-200 ease-out-soft hover:-translate-y-0.5 hover:bg-charcoal-800 active:translate-y-0"
+                  >
+                    <IconPhone className="h-5 w-5" />
+                    <span className="tabular-nums">{clinic.phone}</span>
+                    <span className="sr-only">
+                      — llamar a {clinic.name}
+                    </span>
+                  </a>
+                  <a
+                    href={whatsappUrl(
+                      clinic.whatsapp,
+                      `Hola, quiero pedir cita en ${clinic.name}.`,
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-charcoal-950/20 px-5 py-2.5 font-semibold text-charcoal-950 transition-all duration-200 ease-out-soft hover:-translate-y-0.5 hover:border-sage-600 hover:bg-sage-100 active:translate-y-0"
+                  >
+                    <IconWhatsApp className="h-5 w-5 text-sage-700" />
+                    WhatsApp
+                    <span className="sr-only">— escribir a {clinic.name}</span>
+                  </a>
+                </div>
               </li>
             ))}
           </ul>

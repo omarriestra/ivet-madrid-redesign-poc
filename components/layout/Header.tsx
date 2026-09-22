@@ -60,15 +60,15 @@ export function Header() {
           className="flex shrink-0 items-center"
           aria-label="IVET Madrid, ir a la portada"
         >
-          {/* Marca: solo el isotipo sobre el cuadro carbon. El archivo del
-              logotipo completo ya incluye la palabra IVET, asi que repetirla
-              al lado duplicaba la marca. */}
+          {/* Marca completa: simbolo + palabra IVET, tal y como la usa la
+              clinica. Va sobre el cuadro carbon del propio logotipo y con
+              tamano suficiente para que la marca se lea, no se insinue. */}
           <Image
-            src="/images/brand/ivet-symbol.webp"
+            src="/images/brand/ivet-lockup.webp"
             alt=""
-            width={44}
-            height={44}
-            className="h-11 w-11 rounded-xl bg-charcoal-950 object-contain"
+            width={600}
+            height={526}
+            className="h-13 w-auto rounded-xl bg-charcoal-950 px-3 py-2"
             priority
           />
         </Link>

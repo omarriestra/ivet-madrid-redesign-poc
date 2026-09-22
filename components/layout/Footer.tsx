@@ -35,11 +35,11 @@ export function Footer() {
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5">
               <Image
-                src="/images/brand/ivet-symbol.webp"
+                src="/images/brand/ivet-lockup.webp"
                 alt=""
-                width={44}
-                height={44}
-                className="h-11 w-11 rounded-xl bg-white/10 object-contain"
+                width={600}
+                height={526}
+                className="h-16 w-auto"
               />
               <span className="sr-only">IVET Madrid</span>
             </Link>

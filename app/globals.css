@@ -210,3 +210,64 @@
     transform: none;
   }
 }
+
+@layer utilities {
+  /* Tarjetas del equipo que giran al pulsarlas.
+     Se definen aqui en lugar de con utilidades arbitrarias porque la
+     combinacion de preserve-3d, backface-visibility y rotateY necesita ir
+     junta para que el navegador componga bien las dos caras. */
+  .flip-scene {
+    perspective: 1200px;
+  }
+
+  .flip-inner {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 500ms var(--ease-out-soft);
+  }
+
+  .flip-inner.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flip-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+
+  .flip-face--back {
+    transform: rotateY(180deg);
+  }
+
+  /* Sin movimiento: nada gira. Las caras se intercambian con opacidad,
+     de modo que la informacion sigue siendo accesible. */
+  @media (prefers-reduced-motion: reduce) {
+    .flip-inner,
+    .flip-inner.is-flipped {
+      transform: none;
+      transition: opacity 150ms linear;
+    }
+
+    .flip-face {
+      backface-visibility: visible;
+      transition: opacity 150ms linear;
+    }
+
+    .flip-face--back {
+      transform: none;
+      opacity: 0;
+    }
+
+    .flip-inner.is-flipped .flip-face--front {
+      opacity: 0;
+    }
+
+    .flip-inner.is-flipped .flip-face--back {
+      opacity: 1;
+    }
+  }
+}

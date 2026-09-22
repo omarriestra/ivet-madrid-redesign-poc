@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Section, SectionHeading } from '@/components/ui/Section';
 import { Container } from '@/components/ui/Container';
-import { TeamMemberCard } from '@/components/blocks/TeamMemberCard';
+import { TeamFlipCard } from '@/components/blocks/TeamFlipCard';
 import { CtaBand } from '@/components/blocks/CtaBand';
 import { getTeam } from '@/lib/content';
 
@@ -28,10 +28,13 @@ export default function EquipoPage() {
       </section>
 
       <Section>
-        <ul className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
+        <p className="mb-8 text-sm text-charcoal-900/65">
+          Pulsa en cualquier tarjeta para ver los detalles.
+        </p>
+        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4">
           {team.map((member) => (
             <li key={member.slug} className="reveal">
-              <TeamMemberCard member={member} />
+              <TeamFlipCard member={member} />
             </li>
           ))}
         </ul>

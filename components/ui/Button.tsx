@@ -20,10 +20,12 @@ const variants: Record<Variant, string> = {
   ghost: 'text-charcoal-900 hover:bg-sage-100 hover:text-charcoal-950',
 };
 
+// min-h-11 = 44px: objetivo tactil minimo recomendado. La web la usan
+// familias de todas las edades desde el movil, muchas veces con prisa.
 const sizes: Record<Size, string> = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-5 py-2.5 text-base',
-  lg: 'px-7 py-3.5 text-base sm:text-lg',
+  sm: 'min-h-11 px-4 py-2 text-sm',
+  md: 'min-h-12 px-5 py-2.5 text-base',
+  lg: 'min-h-14 px-7 py-3.5 text-base sm:text-lg',
 };
 
 interface Props {
