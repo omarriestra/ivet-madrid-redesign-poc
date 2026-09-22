@@ -405,8 +405,13 @@ export default function HomePage() {
                       Bata azul, trato de barrio.
                     </p>
                   </div>
-                  <div className="col-span-1 row-span-2 row-start-5 flex items-center justify-center rounded-[1.25rem] bg-amber-500 text-petrol-900">
-                    <IconPaw className="h-7 w-7" />
+                  <div className="col-span-1 row-span-2 row-start-5 flex flex-col items-center justify-center gap-1.5 rounded-[1.25rem] bg-amber-500 px-1 text-petrol-900">
+                    <IconPaw className="h-8 w-8" />
+                    <span className="text-center font-serif text-[0.7rem] font-semibold leading-tight">
+                      Desde
+                      <br />
+                      2022
+                    </span>
                   </div>
                   <figure className="relative col-span-2 col-start-2 row-span-2 row-start-5 overflow-hidden rounded-[1.25rem] bg-petrol-800">
                     <Image
