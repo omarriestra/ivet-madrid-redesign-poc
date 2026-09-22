@@ -57,20 +57,27 @@ export function Header() {
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex shrink-0 items-center"
+          className="flex shrink-0 items-center gap-3"
           aria-label="IVET Madrid, ir a la portada"
         >
-          {/* Marca completa: simbolo + palabra IVET, tal y como la usa la
-              clinica. Va sobre el cuadro carbon del propio logotipo y con
-              tamano suficiente para que la marca se lea, no se insinue. */}
-          <Image
-            src="/images/brand/ivet-lockup.webp"
-            alt=""
-            width={600}
-            height={526}
-            className="h-13 w-auto rounded-xl bg-charcoal-950 px-3 py-2"
-            priority
-          />
+          {/* Marca en dos piezas: el cuadro carbon lleva solo la V, y la
+              palabra IVET va fuera, en texto. Asi el simbolo puede ser
+              compacto y el nombre crecer sin tener que agrandar la barra.
+              El texto replica el logotipo: mayusculas, peso ligero y mucho
+              espaciado entre letras. */}
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-charcoal-950 sm:h-12 sm:w-12">
+            <Image
+              src="/images/brand/ivet-v.webp"
+              alt=""
+              width={240}
+              height={240}
+              className="h-6 w-auto sm:h-7"
+              priority
+            />
+          </span>
+          <span className="text-2xl font-light uppercase leading-none tracking-[0.3em] text-charcoal-950 sm:text-[1.75rem]">
+            Ivet
+          </span>
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">

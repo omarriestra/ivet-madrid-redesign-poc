@@ -1,5 +1,6 @@
 import { getClinics, EMERGENCY_LABEL, EMERGENCY_NOTE } from '@/lib/content';
-import { IconPhone } from '@/components/ui/Icons';
+import { IconPhone, IconWhatsApp } from '@/components/ui/Icons';
+import { whatsappUrl } from '@/lib/utils';
 
 /** Tira de telefonos de urgencias. Los `tel:` son reales y funcionan en movil. */
 export function EmergencyStrip({ compact = false }: { compact?: boolean }) {
@@ -16,23 +17,35 @@ export function EmergencyStrip({ compact = false }: { compact?: boolean }) {
 
       <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {clinics.map((clinic) => (
-          <li key={clinic.slug}>
-            <a
-              href={`tel:${clinic.emergencyPhoneHref}`}
-              className="group flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3.5 transition-colors duration-200 hover:bg-amber-600"
-            >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 transition-colors group-hover:bg-white/20">
-                <IconPhone className="h-5 w-5 text-bone-50" />
-              </span>
-              <span className="min-w-0">
-                <span className="block text-xs font-medium uppercase tracking-wider text-bone-100/60 transition-colors group-hover:text-white/80">
-                  {clinic.shortName}
-                </span>
-                <span className="block font-semibold tabular-nums text-bone-50">
+          <li key={clinic.slug} className="rounded-xl bg-white/5 p-3">
+            <p className="px-1 text-xs font-medium uppercase tracking-wider text-bone-100/65">
+              {clinic.shortName}
+            </p>
+            <div className="mt-2 flex flex-col gap-2">
+              <a
+                href={`tel:${clinic.emergencyPhoneHref}`}
+                className="group flex min-h-12 items-center gap-2.5 rounded-lg bg-amber-600 px-3.5 py-2.5 transition-colors duration-200 hover:bg-amber-700"
+              >
+                <IconPhone className="h-5 w-5 shrink-0 text-white" />
+                <span className="font-semibold tabular-nums text-white">
                   {clinic.emergencyPhone}
                 </span>
-              </span>
-            </a>
+                <span className="sr-only">— llamar a {clinic.name}</span>
+              </a>
+              <a
+                href={whatsappUrl(
+                  clinic.whatsapp,
+                  `Hola, necesito atención urgente en ${clinic.name}.`,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex min-h-12 items-center gap-2.5 rounded-lg border border-white/20 px-3.5 py-2.5 transition-colors duration-200 hover:border-sage-400 hover:bg-white/10"
+              >
+                <IconWhatsApp className="h-5 w-5 shrink-0 text-sage-400" />
+                <span className="text-sm font-semibold text-bone-50">WhatsApp</span>
+                <span className="sr-only">— escribir a {clinic.name}</span>
+              </a>
+            </div>
           </li>
         ))}
       </ul>
