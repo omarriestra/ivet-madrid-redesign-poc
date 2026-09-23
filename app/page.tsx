@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/Icons';
 import {
   EMERGENCY_LABEL,
-  EMERGENCY_NOTE,
   OPENING_HOURS,
   getClinics,
   getServices,
@@ -119,7 +118,7 @@ export default function HomePage() {
               style={{ '--i': 6 } as CSSProperties}
             >
               <ActionButton
-                href="#urgencias"
+                href="#clinicas"
                 tone="emergency"
                 icon={<IconPhone className="h-6 w-6" />}
                 subtitle="Cuatro teléfonos, 24 h"
@@ -135,70 +134,12 @@ export default function HomePage() {
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/*  2 · La respuesta: cuatro telefonos                                 */}
-      {/* ------------------------------------------------------------------ */}
-      <section
-        id="urgencias"
-        aria-labelledby="urgencias-title"
-        className="scroll-mt-20 border-t border-bone-50/10 bg-charcoal-900 text-bone-50"
-      >
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="reveal grid gap-6 lg:grid-cols-12 lg:items-end">
-            <h2
-              id="urgencias-title"
-              className="font-display text-4xl font-semibold sm:text-5xl lg:col-span-7"
-            >
-              Si es urgente, <span className="italic text-sage-500">llama.</span>
-            </h2>
-            <p className="max-w-md text-base leading-relaxed text-bone-100/75 lg:col-span-5 lg:justify-self-end lg:text-lg">
-              {EMERGENCY_LABEL}. {EMERGENCY_NOTE}
-            </p>
-          </div>
-
-          <ul className="mt-10 border-b border-bone-50/15 sm:mt-14">
-            {clinics.map((clinic) => (
-              <li key={clinic.slug} className="border-t border-bone-50/15">
-                <a
-                  href={`tel:${clinic.emergencyPhoneHref}`}
-                  className="group -mx-4 flex flex-col gap-1 px-4 py-5 transition-colors duration-200 hover:bg-sage-500 hover:text-charcoal-950 focus-visible:bg-sage-500 focus-visible:text-charcoal-950 sm:-mx-6 sm:grid sm:grid-cols-[9rem_1fr_auto] sm:items-baseline sm:gap-x-8 sm:px-6 sm:py-6 lg:-mx-8 lg:grid-cols-[12rem_1fr_auto] lg:px-8"
-                >
-                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-bone-100/60 transition-colors duration-200 group-hover:text-charcoal-950/70 group-focus-visible:text-charcoal-950/70">
-                    {clinic.shortName}
-                  </span>
-                  <span className="font-serif text-4xl font-semibold tabular-nums tracking-tight sm:text-5xl lg:text-6xl">
-                    {clinic.emergencyPhone}
-                  </span>
-                  <span className="mt-1 inline-flex items-center gap-2 text-sm font-medium text-bone-100/70 transition-colors duration-200 group-hover:text-charcoal-950 group-focus-visible:text-charcoal-950 sm:mt-0">
-                    <IconPhone className="h-4 w-4" />
-                    Llamar
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 flex flex-col gap-4 text-sm text-bone-100/65 sm:flex-row sm:items-baseline sm:justify-between">
-            <p className="font-medium text-bone-100/85">
-              Las clínicas tienen horario. El teléfono, no.
-            </p>
-            <dl className="flex flex-wrap gap-x-6 gap-y-1">
-              {OPENING_HOURS.map((slot) => (
-                <div key={slot.days} className="flex gap-2">
-                  <dt>{slot.days}</dt>
-                  <dd className="tabular-nums text-bone-50">{slot.hours}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------------ */}
       {/*  3 · Por que aqui: cuatro barrios                                    */}
       {/* ------------------------------------------------------------------ */}
       <section
+        id="clinicas"
         aria-labelledby="clinicas-title"
-        className="bg-bone-50 text-charcoal-950 lg:grid lg:grid-cols-2"
+        className="scroll-mt-20 bg-bone-50 text-charcoal-950 lg:grid lg:grid-cols-2"
       >
         {/* Pareja fotografica: pastor aleman y dobermann, ambos mirando hacia
             el texto. Sin tarjeta: la placa gris de la foto es el bloque. */}
@@ -282,6 +223,19 @@ export default function HomePage() {
                       — llamar a {clinic.name}
                     </span>
                   </a>
+                  {/* Dos centros atienden las urgencias en un numero distinto
+                      del de contacto, asi que se muestra aparte. */}
+                  {clinic.emergencyPhone !== clinic.phone && (
+                    <a
+                      href={`tel:${clinic.emergencyPhoneHref}`}
+                      className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-amber-600 px-5 py-2.5 font-semibold text-white transition-all duration-200 ease-out-soft hover:-translate-y-0.5 hover:bg-amber-700 active:translate-y-0"
+                    >
+                      <IconPhone className="h-5 w-5" />
+                      <span className="text-sm">Urgencias</span>
+                      <span className="tabular-nums">{clinic.emergencyPhone}</span>
+                      <span className="sr-only">— llamar a {clinic.name}</span>
+                    </a>
+                  )}
                   <a
                     href={whatsappUrl(
                       clinic.whatsapp,
@@ -370,7 +324,7 @@ export default function HomePage() {
       {/* ------------------------------------------------------------------ */}
       <section
         aria-labelledby="servicios-title"
-        className="bg-bone-50 text-charcoal-950"
+        className="scroll-mt-20 bg-bone-50 text-charcoal-950"
       >
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:grid lg:grid-cols-12 lg:gap-12 lg:px-8 lg:py-24">
           <div className="reveal lg:col-span-5">

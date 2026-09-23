@@ -58,10 +58,10 @@ export function Header() {
           : 'border-b border-transparent bg-bone-50',
       )}
     >
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex shrink-0 items-center gap-3"
+          className="flex shrink-0 items-center gap-2.5 sm:gap-3"
           aria-label="IVET Madrid, ir a la portada"
         >
           {/* Marca en dos piezas: el cuadro carbon lleva solo la V, y la
@@ -79,7 +79,7 @@ export function Header() {
               priority
             />
           </span>
-          <span className="text-2xl font-light uppercase leading-none tracking-[0.3em] text-charcoal-950 sm:text-[1.75rem]">
+          <span className="text-xl font-light uppercase leading-none tracking-[0.22em] text-charcoal-950 sm:text-[1.75rem] sm:tracking-[0.3em]">
             Ivet
           </span>
         </Link>
@@ -115,7 +115,7 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <Button
             href="/urgencias"
             variant="emergency"
